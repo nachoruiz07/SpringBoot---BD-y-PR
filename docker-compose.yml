@@ -1,0 +1,28 @@
+services:
+  mysql-springboot:
+    image: mysql:8.0
+    container_name: mysql-springboot-jpa
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cine_db
+    ports:
+      - "23306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin-springboot:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-springboot-jpa
+    restart: always
+    environment:
+      PMA_HOST: mysql-springboot
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "58091:80"
+    depends_on:
+      - mysql-springboot
+
+volumes:
+  mysql_data:
