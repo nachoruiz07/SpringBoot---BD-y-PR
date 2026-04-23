@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nombre;
     private String nacionalidad;
 }

@@ -1,9 +1,11 @@
 package com.example.Nacho.Ruiz.Velasco.SpringBoot.Controlador;
 
+import com.example.Nacho.Ruiz.Velasco.SpringBoot.Dominio.Actor;
 import com.example.Nacho.Ruiz.Velasco.SpringBoot.Dominio.Pelicula;
 import com.example.Nacho.Ruiz.Velasco.SpringBoot.Servicio.PeliculaServicio;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,14 +15,31 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/peliculas")
 public class PeliculaControlador {
-    private final PeliculaServicio servicioPelicula;
+    @Autowired
+    private final PeliculaServicio peliculaServicio;
 
-@GetMapping("/lista")
-public List<Pelicula> obtenerTodas(){
-return servicioPelicula.obtenerTodas();
-}
-@PostMapping("/guardar")
-public Pelicula guardar (@RequestBody Pelicula pelicula){
-return  servicioPelicula.guardar(pelicula);
+    @GetMapping("/listar")
+    public List<Pelicula> obtenerTodas(){
+    return peliculaServicio.listarTodosLasPeliculas();
     }
-}
+
+    @PostMapping("/crear")
+    public Pelicula guardar (@RequestBody Pelicula pelicula){
+    return  peliculaServicio.crearPelicula(pelicula);
+    }
+
+    @GetMapping("/buscar/{id}")
+    public Pelicula buscarPelicula(@PathVariable Long id){
+        return peliculaServicio.bucarPeliculaPorId(id);
+    }
+
+    @PutMapping("/modificar/{id}")
+    public Pelicula modificarPelicula(@PathVariable Long id, @RequestBody Pelicula p){
+        return peliculaServicio.actualizarPelicula(id, p);
+    }
+
+    @DeleteMapping("/borrar/{id}")
+    public void borrarPelicula(@PathVariable Long id){
+        peliculaServicio.borrarPeliculaPorId(id);
+    }
+    }

@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String titulo;
     private String genero;
-    private int anio;
+    private Integer anio;
     }
 
 

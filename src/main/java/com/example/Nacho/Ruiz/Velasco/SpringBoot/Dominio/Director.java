@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class Director {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nombre;
-    private int edad;
+    private Integer edad;
 }
