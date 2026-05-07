@@ -3,6 +3,7 @@ package com.example.Nacho.Ruiz.Velasco.SpringBoot.Controlador;
 import com.example.Nacho.Ruiz.Velasco.SpringBoot.Dominio.Actor;
 import com.example.Nacho.Ruiz.Velasco.SpringBoot.Dominio.Pelicula;
 import com.example.Nacho.Ruiz.Velasco.SpringBoot.Servicio.PeliculaServicio;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class PeliculaControlador {
     }
 
     @PostMapping("/crear")
+    @Valid
     public Pelicula guardar (@RequestBody Pelicula pelicula){
     return  peliculaServicio.crearPelicula(pelicula);
     }

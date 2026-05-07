@@ -4,9 +4,11 @@ import com.example.Nacho.Ruiz.Velasco.SpringBoot.Dominio.Actor;
 import com.example.Nacho.Ruiz.Velasco.SpringBoot.Dominio.Director;
 import com.example.Nacho.Ruiz.Velasco.SpringBoot.Dominio.Pelicula;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile("!test")
 public class DataLoader implements CommandLineRunner {
    private final PeliculaRepositorio peliculaRepositorio;
    private final ActorRepositorio actorRepositorio;
@@ -54,7 +56,7 @@ public class DataLoader implements CommandLineRunner {
             directorRepositorio.save(new Director(null, "Martin Scorsese", 81));
             directorRepositorio.save(new Director(null, "Ridley Scott", 86));
             directorRepositorio.save(new Director(null, "Peter Jackson", 62));
-            directorRepositorio.save(new Director(null, "David Fincher", 61));
+            directorRepositorio.save(new Director(null, "Rafael Matraka", 61));
             directorRepositorio.save(new Director(null, "Clint Eastwood", 94));
 
             System.out.println("✅ DATOS DE PRUEBA (PELIS, ACTORES, DIRECTORES) LISTOS");
